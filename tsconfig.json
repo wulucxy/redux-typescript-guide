@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    // 解析为最新版本的es版本，babel 负责后续的编译
+    "target": "esnext",
+    "module": "esnext",
+    // 绝对地址按照 node_modules 解析
+    "moduleResolution": "node",
+    // 开启 jsx
+    "jsx": "react",
+    // 不执行构建，交由 babel 执行
+    "noEmit": true,
+    // 严格模式，包括 strictNullChecks & noImplicitAny.
+    "strict": true,
+    // 跳过三方包检查
+    "skipLibCheck": true,
+    // any 类型不警告
+    "noImplicitAny": true,
+    // 关闭 null 严格检查
+    "strictNullChecks": false,
+    // 将每个文件作为单独的模块
+    "isolatedModules": true,
+    // Import non-ES modules as default imports.
+    "esModuleInterop": true,
+    // 开启 decorator
+    "experimentalDecorators": true
+  },
+  "include": ["src"]
+}

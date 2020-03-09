@@ -1,0 +1,13 @@
+{
+  "presets": [["react-app", { "flow": false, "typescript": true, "absoluteRuntime": false }]],
+  "plugins": [
+    ["import", { "libraryName": "antd", "style": true, "libraryDirectory": "es" }]
+  ],
+  "env": {
+    "development": {
+      plugins: ["react-hot-loader/babel"]
+    }
+  },
+  "sourceMaps": true,
+  "retainLines": true
+}

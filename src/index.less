@@ -1,0 +1,68 @@
+@import './common/styles/index.less';
+html, body{
+  height: 100%;
+}
+body{
+  background-image: linear-gradient(to bottom,#0e3877,#2b71b1);
+}
+.rise{
+  color: rgb(97, 202, 0);
+}
+.fall{
+  color: #f5222d;
+}
+#root {
+	font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.page {
+	padding: 80px 0 30px;
+	color: #fff;
+  .main-content{
+  	max-width: 1200px;
+  	margin: 40px auto 20px;
+  	background: #fff;
+    border-radius: 2px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    color: #333;
+  }
+  .chartsHeader{
+    padding: 0 20px;
+    line-height: 64px;
+    text-align: right;
+    border-bottom: 1px solid rgb(218, 225, 233);
+  }
+}
+.chart-wrapper{
+  min-height: 480px;
+}
+.dashBoard{
+  .box{
+    flex: 1;
+    display: flex;
+    flex-direction:column;
+    padding: 24px 0 0;
+    .center();
+  }
+  .heading{
+    font-size: 48px;
+    color: rgb(78, 92, 110);
+    .percent{
+      font-size: 24px;
+      position: relative;
+      top: -12px;
+      vertical-align: baseline;
+    }
+  }
+  .subtext{
+    font-size: 14px;
+    color: #666;
+  }
+}
+
+.tooltip{
+  line-height: 1.5;
+  .d {font-size: 14px; color: #a7a7a7;}
+  .close {
+    font-size: 20px;
+  }
+}

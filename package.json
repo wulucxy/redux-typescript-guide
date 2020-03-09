@@ -1,0 +1,91 @@
+{
+  "name": "redux-guide",
+  "projectName": "redux-guide",
+  "scripts": {
+    "start": "parcel src/public/index.html --open",
+    "prebuild": "npm run build:clean",
+    "build:clean": "rimraf ./dist",
+    "build": "parcel build src/public/index.html --public-url /redux-guide/ --no-source-maps",
+    "lint": "eslint src --fix --format codeframe",
+    "lint-staged": "lint-staged",
+    "lint:ts": "eslint src --ext .ts,.tsx --fix --format codeframe",
+    "lint:ts-error": "npm run lint:ts -- --quiet",
+    "lint:es": "eslint \"src/**/*.js\" --fix --format codeframe",
+    "ts-compile-check": "tsc --pretty -p tsconfig.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run ts-compile-check && lint-staged",
+      "pre-push": "gh-pages -d dist"
+    }
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "@wac/one": "^0.0.3",
+    "@wac/r3": "^1.6.10",
+    "antd": "^3.10.3",
+    "axios": "^0.18.0",
+    "common": "^0.2.5",
+    "core-js": "^3.6.4",
+    "date-fns": "^1.28.4",
+    "immer": "^3.1.3",
+    "js-yaml": "^3.12.0",
+    "react": "^16.3.1",
+    "react-app-polyfill": "^1.0.6",
+    "react-dom": "^16.3.1",
+    "react-hot-loader": "^4.3.11",
+    "react-redux": "^5.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-immer": "^1.0.2",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^6.1.1",
+    "redux-thunk": "^2.3.0",
+    "type-to-reducer": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@types/classnames": "^2.2.6",
+    "@types/lodash": "^4.14.136",
+    "@types/nanoid": "^1.2.0",
+    "@types/node": "^12.6.8",
+    "@types/parcel-env": "^0.0.0",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.0.10",
+    "@types/react-redux": "^6.0.11",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/redux-logger": "^3.0.7",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "@wac/eslint-config-standard": "^3.1.1",
+    "autoprefixer": "^9.3.1",
+    "babel-plugin-import": "^1.2.1",
+    "babel-preset-react-app": "^9.1.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "fs-extra": "^7.0.0",
+    "husky": "^1.1.2",
+    "less": "^2.7.3",
+    "lint-staged": "^3.4.0",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.8.1",
+    "shelljs": "^0.8.2",
+    "typescript": "^3.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wulucxy/redux-typescript-guide.git"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "npm run lint:ts",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

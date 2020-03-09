@@ -1,0 +1,337 @@
+.clear(){
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.clearfix{
+  .clear();
+}
+
+.size(@height, @width) {
+  width: @width;
+  height: @height;
+}
+.square(@size) {
+  .size(@size, @size);
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.usn() {
+  user-select:none;
+}
+
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.border-radius(@radius) {
+  border-radius: @radius;
+}
+
+// Background sizing
+.background-size(@size) {
+  background-size: @size;
+}
+
+
+// Box sizing
+.box-sizing(@boxmodel) {
+    box-sizing: @boxmodel;
+}
+
+// User select
+// For selecting text on the page
+.user-select(@select) {
+  user-select: @select;
+}
+
+// Centered container element
+.container-fixed() {
+  margin-right: auto;
+  margin-left: auto;
+  .clear();
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity / 100;
+  filter: ~"alpha(opacity=@{opacity})";
+}
+
+// Drop shadows
+.box-shadow(@shadow) {
+  box-shadow: @shadow;
+}
+
+.form-control-focus() {
+  &:focus {
+    outline: 0;
+    border-color: @input-border-focus;
+  }
+}
+
+// Transitions
+.transition(@transition) {
+  transition: @transition;
+}
+.transition-delay(@transition-delay) {
+  transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+  transition-duration: @transition-duration;
+}
+
+// Transformations
+.rotate(@degrees) {
+  transform: rotate(@degrees);
+}
+
+.icon(){
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.checkmark(@color: #454545;@border:#bcbcbc; @bg: #bcbcbc; @borderWidth: 1px; @innerWidth: 1px){
+  position: relative;
+  border-radius: 50%;
+  background-color: @bg;
+  border:@borderWidth solid @border;
+  &:after{
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 60%;
+    left:50%;
+    top:50%;
+    margin-top: -2px;
+    border: solid @color;
+    border-width: 0 @innerWidth @innerWidth 0;
+    transform: translate3d(-50%,-50%,0) rotate(45deg);
+  }
+}
+
+.cross(@color:#454545;@border:#454545;@bg:transparent){
+  position: relative;
+  border-radius: 50%;
+  border:1px solid @border;
+  background-color: @bg;
+  &:before,&:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: @color;
+    left: 50%;
+    top: 50%;
+  }
+  &:before{
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  &:after{
+    transform:  translateX(-50%) rotate(45deg);
+  }
+}
+
+.arrow(@border-color,@width) {
+  display: inline-block; 
+  width: @width;
+  height: @width;
+  background: transparent;
+  border-top: 2px solid @border-color;
+  border-left: 2px solid @border-color;
+  text-decoration: none;
+  color: transparent;
+  
+  &.prev {
+    transform: rotate(-45deg);  
+    left: 0;
+  }
+  
+  &.next {
+    transform: rotate(135deg);  
+    right: 0;
+  }
+
+  &.bottom {
+    transform: rotate(225deg); 
+  }
+}
+
+.center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-v(){
+  display: flex;
+  align-items: center;
+}
+
+.center-h(){
+  display: flex;
+  justify-content: center;
+}
+
+.triangle-base() {
+    display: inline-block;
+    width: 0;
+    height: 0;
+}
+
+.clamp(@clamp){
+  display: -webkit-box;
+  -webkit-line-clamp: @clamp;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.triangle(@direction, @size, @color) {
+    .triangle(@direction, @size, @size, @color);
+}
+.triangle(@direction, @width, @height, @color) when (@direction = up) {
+    .triangle-base();
+    border-left: @width solid transparent;
+    border-right: @width solid transparent;
+    border-bottom: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = down) {
+    .triangle-base();
+    border-left: @width solid transparent;
+    border-right: @width solid transparent;
+    border-top: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = left) {
+    .triangle-base();
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
+    border-right: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = right) {
+    .triangle-base();
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
+    border-left: @height solid @color;
+}
+
+.animation(@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
+}
+
+.keyframes(@name,@rules) {
+    @-webkit-keyframes @name {
+        @rules();
+    }
+    @-moz-keyframes @name {
+        @rules();
+    }
+    @-ms-keyframes @name {
+        @rules();
+    }
+    @-o-keyframes @name {
+        @rules();
+    }
+    @keyframes @name {
+        @rules();
+    }
+}
+
+.spinner(){
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../image/spinner.png) no-repeat;
+    .keyframes(rotate, {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    });
+    .animation(rotate 2s linear infinite)
+  }
+
+.loader(@width:18px, @height:18px, @borderColor:#fff, @overlayColor:transparent){
+    border: 1px solid transparent;
+    cursor: pointer;
+    position: relative;
+    &:before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -@height/2;
+    margin-left: -@width/2;
+    width: @width;
+    height: @height;
+    border-radius: 50%;
+    border: 1px solid @overlayColor;
+    border-top-color: @borderColor;
+    .animation(rotate 2s linear infinite)
+    }
+  }
+  
+.form-hintColor(@color){
+  &::-webkit-input-placeholder { 
+    color: @color;
+  }
+  &::-moz-placeholder { 
+    color: @color;
+  }
+  &:-ms-input-placeholder { 
+   color: @color;
+  }
+  &:-moz-placeholder { 
+    color: @color;
+  }
+}
+
+// 头像
+.avatar(@width, @height, @borderColor){
+  display: inline-block;
+  width: @width;
+  height: @height;
+  img{
+    border-radius: 50%;
+    border: 1px solid @borderColor;
+    max-width: 100%;
+    display: inline-block;
+    height: auto;
+  }
+}
+
+.placeholder(@color) {
+    ::-webkit-input-placeholder {
+        color: @color;
+    }
+    :-moz-placeholder {
+        color: @color;
+    }
+    ::-moz-placeholder {
+      color: @color;
+    }
+}
+
