@@ -9,6 +9,8 @@ export enum BitcoinActionTypes {
   BITCOIN_SET_FILTER = 'BITCOIN_SET_FILTER',
 }
 
+export type FilterType = 'week' | 'year' | 'month' | 'all'
+
 interface BitcoinPrice {
   code: string
   rate: string
@@ -18,7 +20,7 @@ interface BitcoinPrice {
 
 // 数据
 export interface PriceData {
-  d: Date
+  d: Date | string
   y: number
 }
 
@@ -33,7 +35,7 @@ export interface BitcoinState {
 
 // 请求参数
 export interface BPIParams {
-  filterType: string
+  filterType: FilterType
   start: string
   end: string
 }

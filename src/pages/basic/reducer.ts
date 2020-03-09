@@ -1,7 +1,7 @@
 import typeToReducer from 'type-to-reducer'
 import { AsyncAction } from 'redux-promise-middleware'
 import axios from '../../common/axios'
-import { BitcoinActionTypes, BPIParams } from './types'
+import { BitcoinActionTypes, BPIParams, BitcoinState } from './types'
 
 const initialState = {
   filterType: 'week',
@@ -38,7 +38,7 @@ export const queryBPICurrency = (): AsyncAction => {
 
 export default typeToReducer(
   {
-    [BitcoinActionTypes.BITCOIN_SET_FILTER]: (state, action) => {
+    [BitcoinActionTypes.BITCOIN_SET_FILTER]: (state: BitcoinState, action) => {
       const { filterType } = action.payload
       state.filterType = filterType
       return state
@@ -48,15 +48,15 @@ export default typeToReducer(
         state.requestLoading = true
         return state
       },
-      FULFILLED: (state, action) => {
+      FULFILLED: (state: BitcoinState, action) => {
         const { bpi, time } = action.payload
-        const { filterType } = action.meta
+        const { filterType } = action.meta as BPIParams
 
         const sortedData = []
         for (let date in bpi) {
           sortedData.push({
             d: date,
-            y: bpi[date],
+            y: bpi[date] as number,
           })
         }
 

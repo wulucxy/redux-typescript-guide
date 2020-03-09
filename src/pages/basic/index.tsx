@@ -6,10 +6,10 @@ import { get, isEmpty } from 'lodash'
 import { format } from 'date-fns'
 
 import { AppState } from '../../store/root'
-import { ChartsRender, ChartsTab, DashBoard, Gitlab } from './components'
+import { ChartsRender, ChartsTab, DashBoard, Github } from './components'
 import { setFilterType, queryBPI, queryBPICurrency } from './reducer'
 
-import { SetFilterType, QueryBPICurrency, QueryBPI, BitcoinState, BPIParams } from './types'
+import { SetFilterType, QueryBPICurrency, QueryBPI, BitcoinState, BPIParams, FilterType } from './types'
 
 interface BasicProps extends BitcoinState {
   setFilterType: SetFilterType
@@ -52,7 +52,7 @@ class Basic extends React.Component<BasicProps, BasicState> {
 
   curTime = new Date()
 
-  getPeriodTime = (filterType = 'week'): BPIParams => {
+  getPeriodTime = (filterType: FilterType = 'week'): BPIParams => {
     const period = this.timeMap[filterType]
     const prevTime =
       filterType === 'all'
@@ -94,7 +94,7 @@ class Basic extends React.Component<BasicProps, BasicState> {
     const isLoadDone = !isEmpty(historical) && !isEmpty(currentPrice) && requestLoading === false
     return (
       <div className="page">
-        <Gitlab />
+        <Github />
         <h1 className="tc">Bitcoin Price Index</h1>
         <div className="main-content">
           <ChartsTab handleChange={this.handleRadioChange} filterType={filterType} />
@@ -129,11 +129,8 @@ const select = (state: AppState) => {
   }
 }
 
-export default connect(
-  select,
-  {
-    setFilterType,
-    queryBPI,
-    queryBPICurrency,
-  },
-)(Basic)
+export default connect(select, {
+  setFilterType,
+  queryBPI,
+  queryBPICurrency,
+})(Basic)

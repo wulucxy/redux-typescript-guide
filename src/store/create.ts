@@ -18,7 +18,7 @@ const getMiddleware = () => {
 
 const rootReducer: Reducer<AppState> = combineReducers(produce, reducers)
 
-export default function(initialState = {}) {
-  const store = createStore(rootReducer, initialState, composeWithDevTools(getMiddleware()))
+export default function() {
+  const store = createStore(rootReducer, composeWithDevTools(getMiddleware()))
   return store
 }

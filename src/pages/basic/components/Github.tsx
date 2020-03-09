@@ -1,12 +1,12 @@
 import React from 'react'
 
-const defaultLink = 'http://git.caimi-inc.com/qingtong/redux-guide'
+const defaultLink = 'https://github.com/wulucxy/redux-typescript-guide'
 
-interface GitLabCornerProps {
+interface GithubCornerProps {
   href?: string
 }
 
-const GitLabCorner: React.FC<GitLabCornerProps> = ({ href = defaultLink }) => {
+const GithubCorner: React.FC<GithubCornerProps> = ({ href = defaultLink }) => {
   return (
     <a
       href={href}
@@ -35,4 +35,4 @@ const GitLabCorner: React.FC<GitLabCornerProps> = ({ href = defaultLink }) => {
   )
 }
 
-export default GitLabCorner
+export default GithubCorner
