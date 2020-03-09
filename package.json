@@ -1,6 +1,7 @@
 {
   "name": "redux-guide",
   "projectName": "redux-guide",
+  "homepage": "http://wulucxy.github.io/redux-guide",
   "scripts": {
     "start": "parcel src/public/index.html --open",
     "prebuild": "npm run build:clean",
