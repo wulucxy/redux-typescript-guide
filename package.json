@@ -1,12 +1,12 @@
 {
-  "name": "redux-guide",
-  "projectName": "redux-guide",
-  "homepage": "http://wulucxy.github.io/redux-guide",
+  "name": "redux-typescript-guide",
+  "projectName": "redux-typescript-guide",
+  "homepage": "http://wulucxy.github.io/redux-typescript-guide",
   "scripts": {
     "start": "parcel src/public/index.html --open",
     "prebuild": "npm run build:clean",
     "build:clean": "rimraf ./dist",
-    "build": "parcel build src/public/index.html --public-url /redux-guide/ --no-source-maps",
+    "build": "parcel build src/public/index.html --public-url /redux-typescript-guide/ --no-source-maps",
     "lint": "eslint src --fix --format codeframe",
     "lint-staged": "lint-staged",
     "lint:ts": "eslint src --ext .ts,.tsx --fix --format codeframe",
